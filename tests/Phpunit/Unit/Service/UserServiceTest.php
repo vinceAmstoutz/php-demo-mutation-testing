@@ -41,9 +41,9 @@ final class UserServiceTest extends TestCase
             ->method('persist')
             ->with($this->isInstanceOf(User::class));
 
-//        $this->entityManager
-//            ->expects($this->once())
-//            ->method('flush');
+        //        $this->entityManager
+        //            ->expects($this->once())
+        //            ->method('flush');
 
         $this->passwordHasher->method('hash')
             ->with('test')
