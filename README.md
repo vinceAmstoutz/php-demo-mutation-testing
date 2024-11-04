@@ -6,7 +6,7 @@ présentée par Vincent Amstoutz.
 L'objectif de cette conférence est de montrer comment les tests de mutations peuvent renforcer la robustesse
 des tests PHP, en utilisant des outils tels qu'[Infection PHP](https://infection.github.io/) et [Pest](https://pestphp.com/).
 
-## Prérequis
+## Prérequis ⚠️
 
 > [!IMPORTANT]
 > Les commandes décrites ci-dessous nécessitent l'utilisation de [Castor](https://castor.jolicode.com/) ! Assurez-vous que Castor est bien installé et configuré sur votre machine.
@@ -19,7 +19,29 @@ Pour installer les dépendances du projet, utilisez la commande suivante :
 castor install
 ```
 
-## Exécution des outils de qualité de code (PHP-CS-Fixer, PHPStan & Rector)
+## Lancer les tests
+
+### Tests unitaires 🧪
+Avec PHPUnit
+  ```bash
+  XDEBUG_MODE=coverage php bin/phpunit --testsuite=Phpunit
+  ```
+Avec Pest
+  ```bash
+  XDEBUG_MODE=coverage vendor/bin/pest --testsuite=Pest
+  ```
+
+### Tests de mutation 👽
+Avec Infection PHP (qui utilise PHPUnit)
+  ```bash
+  XDEBUG_MODE=coverage tools/infection/vendor/bin/infection
+  ```
+Avec Pest
+  ```bash
+  XDEBUG_MODE=coverage php vendor/bin/pest --testsuite=Pest --mutate
+  ```
+
+## Outils de qualité de code (PHP-CS-Fixer, PHPStan & Rector) 💎
 ```bash
 castor lint
 ```
