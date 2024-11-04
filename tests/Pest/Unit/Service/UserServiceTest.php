@@ -13,17 +13,16 @@ declare(strict_types=1);
 use App\Entity\User;
 use App\Service\UserService;
 use Doctrine\ORM\EntityManagerInterface;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
+use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\PasswordHasher\PasswordHasherInterface;
 
-covers(UserService::class);
+mutates(UserService::class);
 
 beforeEach(function (): void {
-    /* @var EntityManagerInterface&MockObject $this entityManager */
     $this->entityManager = Mockery::mock(EntityManagerInterface::class);
-
-    /* @var PasswordHasherInterface&MockObject $this entityManager */
     $this->passwordHasher = Mockery::mock(PasswordHasherInterface::class);
-
     $this->userService = new UserService($this->entityManager, $this->passwordHasher);
 });
 
