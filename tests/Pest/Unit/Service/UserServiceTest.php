@@ -13,9 +13,6 @@ declare(strict_types=1);
 use App\Entity\User;
 use App\Service\UserService;
 use Doctrine\ORM\EntityManagerInterface;
-use Mockery\LegacyMockInterface;
-use Mockery\MockInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\PasswordHasher\PasswordHasherInterface;
 
 mutates(UserService::class);
