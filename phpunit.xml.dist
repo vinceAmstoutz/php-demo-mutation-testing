@@ -34,8 +34,11 @@
     </coverage>
 
     <testsuites>
-        <testsuite name="Project Test Suite">
-            <directory>tests</directory>
+        <testsuite name="Phpunit">
+            <directory>tests/Phpunit</directory>
+        </testsuite>
+        <testsuite name="Pest">
+            <directory>tests/Pest</directory>
         </testsuite>
     </testsuites>
 

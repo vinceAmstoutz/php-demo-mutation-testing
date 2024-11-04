@@ -1,6 +1,7 @@
 {
     "$schema": "https://raw.githubusercontent.com/infection/infection/0.29.8/resources/schema.json",
     "testFramework":"phpunit",
+    "testFrameworkOptions": "--testsuite=Phpunit",
     "source": {
         "directories": [
             "src/Service" //For presentation purposes

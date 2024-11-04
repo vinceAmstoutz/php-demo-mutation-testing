@@ -15,6 +15,8 @@ use App\Service\UserService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\PasswordHasher\PasswordHasherInterface;
 
+covers(UserService::class);
+
 beforeEach(function (): void {
     /* @var EntityManagerInterface&MockObject $this entityManager */
     $this->entityManager = Mockery::mock(EntityManagerInterface::class);
@@ -25,14 +27,16 @@ beforeEach(function (): void {
     $this->userService = new UserService($this->entityManager, $this->passwordHasher);
 });
 
-covers(UserService::class);
 it('creates a user', function (): void {
     $this->entityManager
         ->shouldReceive('persist')
         ->once()
         ->with(Mockery::type(User::class));
 
-    $this->entityManager->shouldReceive('flush');
+    $this->entityManager
+        ->shouldReceive('flush')
+//        ->once()
+    ;
 
     $this->passwordHasher
         ->shouldReceive('hash')
