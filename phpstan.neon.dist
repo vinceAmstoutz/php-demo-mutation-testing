@@ -4,4 +4,4 @@ parameters:
         - src
         - tests
     excludePaths:
-        - tests/Unit/Pest/UserServiceTest.php
+        - tests/Pest
