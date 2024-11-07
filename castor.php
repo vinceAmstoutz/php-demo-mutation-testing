@@ -18,14 +18,26 @@ use function Castor\run;
 #[AsTask(description: 'Install project & tools')]
 function install(): void
 {
-    run(['composer', 'install']);
+    processDependencies('install');
+    io()->success('Project ready! ☑️');
+}
+
+#[AsTask(description: 'Update project dependencies & tools dependencies')]
+function update(): void
+{
+    processDependencies('update');
+    io()->success('Project dependencies updated! ☑️');
+}
+
+function processDependencies(string $operation): void
+{
+    run(['composer', $operation]);
 
     $tools = ['infection', 'php-cs-fixer', 'phpstan', 'rector'];
     foreach ($tools as $tool) {
-        run(['composer', 'install', '--working-dir=tools/'.$tool]);
+        run(['composer', $operation, '--working-dir=tools/'.$tool]);
+        io()->success("$tool dependencies OK for `composer $operation` ! ☑️");
     }
-
-    io()->success('Project ready! ☑️');
 }
 
 #[AsTask(description: 'Run PHPCSFixer, PHPStan & Rector')]
