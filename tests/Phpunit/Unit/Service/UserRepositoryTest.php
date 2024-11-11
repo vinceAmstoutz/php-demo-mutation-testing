@@ -13,15 +13,15 @@ declare(strict_types=1);
 namespace App\Tests\Phpunit\Unit\Service;
 
 use App\Entity\User;
-use App\Service\UserService;
+use App\Service\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\PasswordHasher\PasswordHasherInterface;
 
-final class UserServiceTest extends TestCase
+final class UserRepositoryTest extends TestCase
 {
-    private UserService $userService;
+    private UserRepository $userRepository;
 
     private EntityManagerInterface&MockObject $entityManager;
 
@@ -29,9 +29,9 @@ final class UserServiceTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->entityManager = $this->createMock(EntityManagerInterface::class);
-        $this->passwordHasher = $this->createMock(PasswordHasherInterface::class);
-        $this->userService = new UserService($this->entityManager, $this->passwordHasher);
+        $this->entityManager = $this->createMock(EntityManagerInterface::class); // bad practice only for demo
+        $this->passwordHasher = $this->createMock(PasswordHasherInterface::class); // bad practice only for demo
+        $this->userRepository = new UserRepository($this->entityManager, $this->passwordHasher); // bad practice only for demo
     }
 
     public function test_create_user(): void
@@ -49,7 +49,7 @@ final class UserServiceTest extends TestCase
             ->with('test')
             ->willReturn('hashed_test_password');
 
-        $user = $this->userService->create('Alice', 'test');
+        $user = $this->userRepository->create('Alice', 'test');
 
         $this->assertInstanceOf(User::class, $user);
         $this->assertSame('Alice', $user->getUsername());

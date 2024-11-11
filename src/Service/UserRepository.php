@@ -17,7 +17,7 @@ use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\PasswordHasher\PasswordHasherInterface;
 
-final readonly class UserService
+final readonly class UserRepository
 {
     public function __construct(
         private EntityManagerInterface $entityManager,

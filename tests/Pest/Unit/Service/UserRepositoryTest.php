@@ -11,16 +11,16 @@
 declare(strict_types=1);
 
 use App\Entity\User;
-use App\Service\UserService;
+use App\Service\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\PasswordHasher\PasswordHasherInterface;
 
-mutates(UserService::class);
+mutates(UserRepository::class);
 
 beforeEach(function (): void {
-    $this->entityManager = Mockery::mock(EntityManagerInterface::class);
-    $this->passwordHasher = Mockery::mock(PasswordHasherInterface::class);
-    $this->userService = new UserService($this->entityManager, $this->passwordHasher);
+    $this->entityManager = Mockery::mock(EntityManagerInterface::class); // bad practice only for demo
+    $this->passwordHasher = Mockery::mock(PasswordHasherInterface::class); // bad practice only for demo
+    $this->userRepository = new UserRepository($this->entityManager, $this->passwordHasher);
 });
 
 it('creates a user', function (): void {
@@ -39,7 +39,7 @@ it('creates a user', function (): void {
         ->with('test')
         ->andReturn('hashed_test_password');
 
-    $user = $this->userService->create('Alice', 'test');
+    $user = $this->userRepository->create('Alice', 'test');
 
     expect($user)->toBeInstanceOf(User::class);
     expect($user->getUsername())->toBe('Alice');
