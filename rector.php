@@ -11,6 +11,7 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
+use Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector;
 
 return RectorConfig::configure()
     ->withPaths([
@@ -24,4 +25,7 @@ return RectorConfig::configure()
         true, true, true, true, true, true,
         true, true, true, false, true
     )
+    ->withSkip([
+        PreferPHPUnitThisCallRector::class,
+    ])
 ;

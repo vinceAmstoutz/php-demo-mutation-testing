@@ -37,12 +37,12 @@ final class UserRepositoryTest extends TestCase
     public function test_create_user(): void
     {
         $this->entityManager
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('persist')
-            ->with($this->isInstanceOf(User::class));
+            ->with(self::isInstanceOf(User::class));
 
         //        $this->entityManager
-        //            ->expects($this->once())
+        //            ->expects(self::once())
         //            ->method('flush');
 
         $this->passwordHasher->method('hash')
@@ -51,8 +51,8 @@ final class UserRepositoryTest extends TestCase
 
         $user = $this->userRepository->create('Alice', 'test');
 
-        $this->assertInstanceOf(User::class, $user);
-        $this->assertSame('Alice', $user->getUsername());
-        $this->assertSame('hashed_test_password', $user->getPassword());
+        self::assertInstanceOf(User::class, $user);
+        self::assertSame('Alice', $user->getUsername());
+        self::assertSame('hashed_test_password', $user->getPassword());
     }
 }

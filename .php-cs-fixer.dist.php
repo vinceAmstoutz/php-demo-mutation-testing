@@ -45,6 +45,7 @@ return (new PhpCsFixer\Config())
         'php_unit_test_annotation' => [
             'style' => 'prefix',
         ],
+        'php_unit_test_case_static_method_calls' => ['call_type' => 'self'],
         'phpdoc_add_missing_param_annotation' => [
             'only_untyped' => true,
         ],
