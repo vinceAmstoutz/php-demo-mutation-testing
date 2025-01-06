@@ -47,6 +47,7 @@ function fix(): void
         'tools/php-cs-fixer/vendor/bin/php-cs-fixer fix',
         'tools/phpstan/vendor/bin/phpstan',
         'tools/rector/vendor/bin/rector',
+        'tools/php-cs-fixer/vendor/bin/php-cs-fixer fix',
     ];
 
     foreach ($commands as $command) {
