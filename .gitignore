@@ -26,3 +26,6 @@
 /.castor.stub.php
 ###< tools ###
 
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###

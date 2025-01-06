@@ -1,0 +1,12 @@
+includes:
+    - tools/phpstan/vendor/phpstan/phpstan-symfony/extension.neon
+
+parameters:
+    level: max
+    paths:
+        - src
+        - tests
+    excludePaths:
+        - tests/Pest
+    symfony:
+        containerXmlPath: var/cache/dev/App_KernelDevDebugContainer.xml
