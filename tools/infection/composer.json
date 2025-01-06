@@ -1,6 +1,6 @@
 {
     "require": {
-        "infection/infection": "^0.29.8"
+        "infection/infection": "^0.29"
     },
     "config": {
         "allow-plugins": {
