@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use SensitiveParameter;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\PasswordHasher\PasswordHasherInterface;
@@ -24,7 +23,7 @@ final readonly class UserRepository
         private PasswordHasherInterface $passwordHasher,
     ) {}
 
-    public function create(string $username, #[SensitiveParameter] string $password): User
+    public function create(string $username, #[\SensitiveParameter] string $password): User
     {
         $passwordHashed = $this->passwordHasher->hash($password);
 
